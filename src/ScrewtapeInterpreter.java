@@ -115,12 +115,16 @@ public class ScrewtapeInterpreter {
           openings.push(i);
       }else if(current == ']'){
         if(openings.isEmpty()){
-           throw new IllegalArgumentException("Unmatched closing bracket");
+           throw new IllegalArgumentException("Program contains unmatched brackets");
         }
         int openingIndex = openings.pop();
         myMap.put(i, openingIndex);
         }
       }
+
+    if(!openings.isEmpty()){
+      throw new IllegalArgumentException("Program contains unmatched brackets");
+    }
     return myMap;
   }
 
