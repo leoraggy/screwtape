@@ -108,20 +108,19 @@ public class ScrewtapeInterpreter {
    */
   public Map<Integer, Integer> bracketMap(String program) {
     Map<Integer, Integer> myMap = new HashMap<>();
-    Stack<Character> openings = new Stack<>();
-    int openingIndex = 0;
+    Stack<Integer> openings = new Stack<>();
     for(int i = 0; i < program.length(); i++){
       char current = program.charAt(i);
       if(current == '['){
-          openingIndex = i;
-          openings.push(current);
-      }else{
-        if(current == ']'){
-          myMap.put(i, openingIndex);
+          openings.push(i);
+      }else if(current == ']'){
+        if(openings.isEmpty()){
+           throw new IllegalArgumentException("Unmatched closing bracket");
+        }
+        int openingIndex = openings.pop();
+        myMap.put(i, openingIndex);
         }
       }
-    }
-    
     return myMap;
   }
 
