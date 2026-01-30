@@ -36,6 +36,17 @@ class ScrewtapeInterpreterTest {
 
     assertEquals(expectedMap, actualMap);
   }
+
+ @Test
+ void testUnmatchedClosingBracket() {
+    ScrewtapeInterpreter interpreter = new ScrewtapeInterpreter();
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> interpreter.bracketMap("[]]"),
+        "Expected bracketMap to throw IllegalArgumentException for unmatched closing bracket."
+    );
+}
+
   
 
   @Test
