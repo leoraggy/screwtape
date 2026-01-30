@@ -106,4 +106,14 @@ class NodeTest {
     assertEquals(List.of(100), values);
   }
   // TODO: Add at least one more test for list constructor that would be useful and cover new ground.
+  @Test
+  void testToListWithDuplicateValues(){
+    List<Integer> values = List.of(5, 5, 5,5,5);
+    Node head = new Node(values);
+
+    List<Integer> values1 = head.toList();
+
+    assertEquals(List.of(5, 5, 5,5,5), values1);
+  }
+
 }
