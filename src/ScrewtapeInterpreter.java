@@ -174,6 +174,6 @@ public class ScrewtapeInterpreter {
         this.tapePointer = tapePointer.next;
       }
     }
-    return null;
+    return program;
   }
 }
