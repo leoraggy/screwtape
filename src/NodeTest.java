@@ -43,7 +43,36 @@ class NodeTest {
 
   
   // TODO: Add test for list constructor when passed null list
+   @Test
+  void testListWithNull() {
+
+  assertThrows(
+        NullPointerException.class,
+        () -> new Node(null),
+        "Expected constructor to throw NullPointerException for an empty list."
+    );
+  }
+
   // TODO: Add at least one more test for list constructor that would be useful and cover new ground.
+
+    @Test
+    void testListConstructorWithNegativeValues() {
+ // Arrange
+    List<Integer> values = List.of(-5, -7, -3);
+
+    // Act
+    Node head = new Node(values);
+
+    // Assert
+    assertEquals(-5, head.value);
+    assertNotNull(head.next);
+    assertEquals(-7, head.next.value);
+    assertNotNull(head.next.next);
+    assertEquals(-3, head.next.next.value);
+    assertNull(head.next.next.next);
+    assertEquals(head, head.next.prev);
+    assertEquals(head.next, head.next.next.prev);
+  }
 
 
   // -------- WAVE 2 -------

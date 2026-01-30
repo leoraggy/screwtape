@@ -37,9 +37,22 @@ public class Node {
    * @param list The list of integers to initialize the doubly linked list.
    * @throws IllegalArgumentException If the list is null or empty.
    */
-  public Node(List<Integer> list) {
-    // TODO: implement this
-  }
+public Node(List<Integer> list) {
+    if (list.size() == 0 || list == null) {
+      throw new IllegalArgumentException("Expected constructor to throw IllegalArgumentException for an empty list.");
+    }
+    
+    this.value = list.get(0);
+    this.prev = null;
+    
+    Node current = this;
+    for (int i = 1; i < list.size(); i++) {
+        Node node = new Node(list.get(i));
+        node.prev = current;
+        current.next = node;
+        current = current.next;
+    }
+}
 
   /**
    * Converts the linked list starting from this node into a list of integers.
