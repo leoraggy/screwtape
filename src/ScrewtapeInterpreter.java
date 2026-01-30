@@ -163,6 +163,7 @@ public class ScrewtapeInterpreter {
           tapePointer.prev = prevNode;
         }
         this.tapePointer = tapePointer.prev;
+        this.tapeHead = tapePointer;
       }
 
        if(c == '>'){
@@ -174,6 +175,6 @@ public class ScrewtapeInterpreter {
         this.tapePointer = tapePointer.next;
       }
     }
-    return program;
+    return "hi";
   }
 }
