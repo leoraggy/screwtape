@@ -147,8 +147,33 @@ public class ScrewtapeInterpreter {
    * @throws IllegalArgumentException If the program contains unmatched brackets.
    */
   public String execute(String program) {
-    // TODO: Implement this
-    // If you get stuck, you can look at hint.md for a hint
+    for(char c : program.toCharArray()){
+      if(c == '+'){
+        this.tapePointer.value++;
+      }
+
+      if(c == '-'){
+        this.tapePointer.value--;
+      }
+
+      if(c == '<'){
+        if(tapePointer.prev == null){
+          Node prevNode = new Node(0);
+          prevNode.next = tapePointer;
+          tapePointer.prev = prevNode;
+        }
+        this.tapePointer = tapePointer.prev;
+      }
+
+       if(c == '>'){
+        if(tapePointer.next == null){
+          Node nextNode = new Node(0);
+          nextNode.prev = tapePointer;
+          tapePointer.next = nextNode;
+        }
+        this.tapePointer = tapePointer.next;
+      }
+    }
     return null;
   }
 }
